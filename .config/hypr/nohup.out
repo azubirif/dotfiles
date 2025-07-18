@@ -31,3 +31,25 @@ built from commit  ()
 [LOG] Image data for eDP-1: /home/azubirif/Imágenes/gruvbox_city.png at [-0.00, 0.00], scale: 1.00 (original image size: [1920, 1080])
 [LOG] Submitting viewport dest size 1920x1080 for 5fd8f0c45760
 [LOG] handlePreferredScale: 1.00 for 5fd8f0c45760
+[LOG] Welcome to hyprpaper!
+built from commit  ()
+[LOG] Cleaned old hyprpaper preloads (1), removing 8.3MB
+[LOG] Preloaded target /home/azubirif/Imágenes/catpuccin.jpg in 4.69ms -> Pixel size: [728, 410]
+[LOG] Buffer created for target /home/azubirif/Imágenes/catpuccin.jpg, Shared Memory usage: 8.3MB
+[LOG] Total SM usage for all buffers: 8.3MB
+[LOG] configure for eDP-1
+[LOG] configure for eDP-1
+[LOG] Image data for eDP-1: /home/azubirif/Imágenes/catpuccin.jpg at [0.00, -0.25], scale: 2.64 (original image size: [728, 410])
+[LOG] Submitting viewport dest size 1920x1080 for 55769ec82810
+[LOG] handlePreferredScale: 1.00 for 55769ec82810
+[LOG] Welcome to hyprpaper!
+built from commit  ()
+[LOG] Cleaned old hyprpaper preloads (1), removing 8.3MB
+[LOG] Preloaded target /home/azubirif/Imágenes/astronaut.jpg in 69.32ms -> Pixel size: [2912, 1632]
+[LOG] Buffer created for target /home/azubirif/Imágenes/astronaut.jpg, Shared Memory usage: 8.3MB
+[LOG] Total SM usage for all buffers: 8.3MB
+[LOG] configure for eDP-1
+[LOG] configure for eDP-1
+[LOG] Image data for eDP-1: /home/azubirif/Imágenes/astronaut.jpg at [-5.33, 0.00], scale: 0.66 (original image size: [2912, 1632])
+[LOG] Submitting viewport dest size 1920x1080 for 55efa0a6a810
+[LOG] handlePreferredScale: 1.00 for 55efa0a6a810
