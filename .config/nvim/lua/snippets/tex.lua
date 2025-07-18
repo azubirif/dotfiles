@@ -785,4 +785,4 @@ local s = {
   }),
 }
 
-ls.add_snippets('plaintex', s, { key = 'plaintex' })
+ls.add_snippets('tex', s, { key = 'tex' })
