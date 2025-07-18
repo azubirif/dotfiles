@@ -90,6 +90,9 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
@@ -175,6 +178,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', { desc = 'NvimTree toggle' })
+vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeFindFile<CR>', { desc = 'NvimTree focus' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -379,7 +384,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons', opts = {} },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -435,6 +440,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+      vim.keymap.set('n', '<leader>sp', builtin.git_status, { desc = '[S]earch Git' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -835,6 +841,13 @@ require('lazy').setup({
           -- },
         },
         opts = {},
+        config = function()
+          require('luasnip.loaders.from_lua').load {
+            paths = {
+              './lua/snippets',
+            },
+          }
+        end,
       },
       'folke/lazydev.nvim',
     },
@@ -962,6 +975,52 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+  {
+    'nvim-tree/nvim-tree.lua',
+    config = function()
+      require('nvim-tree').setup {
+        filters = { dotfiles = false },
+        disable_netrw = true,
+        hijack_cursor = true,
+        sync_root_with_cwd = true,
+        update_focused_file = {
+          enable = true,
+          update_root = false,
+        },
+        view = {
+          width = 30,
+          preserve_window_proportions = true,
+        },
+        renderer = {
+          root_folder_label = false,
+          highlight_git = true,
+          indent_markers = { enable = true },
+          icons = {
+            glyphs = {
+              default = '󰈚',
+              folder = {
+                default = '',
+                empty = '',
+                empty_open = '',
+                open = '',
+                symlink = '',
+              },
+              git = { unmerged = '' },
+            },
+          },
+        },
+      }
+    end,
+  },
+  {
+    'lervag/vimtex',
+    lazy = false, -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_view_method = 'okular'
+    end,
   },
   {
     'nvim-lualine/lualine.nvim',
