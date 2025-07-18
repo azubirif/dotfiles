@@ -1,0 +1,33 @@
+[LOG] Welcome to hyprpaper!
+built from commit  ()
+[LOG] Cleaned old hyprpaper preloads (1), removing 8.3MB
+[LOG] Preloaded target /home/azubirif/Imágenes/sword_forest.jpg in 12.78ms -> Pixel size: [736, 414]
+[LOG] Buffer created for target /home/azubirif/Imágenes/sword_forest.jpg, Shared Memory usage: 8.3MB
+[LOG] Total SM usage for all buffers: 8.3MB
+[LOG] configure for eDP-1
+[LOG] configure for eDP-1
+[LOG] Image data for eDP-1: /home/azubirif/Imágenes/sword_forest.jpg at [-0.00, 0.00], scale: 2.61 (original image size: [736, 414])
+[LOG] Submitting viewport dest size 1920x1080 for 5b51e9dd34c0
+[LOG] handlePreferredScale: 1.00 for 5b51e9dd34c0
+[LOG] Welcome to hyprpaper!
+built from commit  ()
+[LOG] Cleaned old hyprpaper preloads (1), removing 8.3MB
+[LOG] Preloaded target /home/azubirif/Documentos/config-files/vaporwave.png in 109.94ms -> Pixel size: [2560, 1440]
+[LOG] Buffer created for target /home/azubirif/Documentos/config-files/vaporwave.png, Shared Memory usage: 8.3MB
+[LOG] Total SM usage for all buffers: 8.3MB
+[LOG] configure for eDP-1
+[LOG] configure for eDP-1
+[LOG] Image data for eDP-1: /home/azubirif/Documentos/config-files/vaporwave.png at [-0.00, 0.00], scale: 0.75 (original image size: [2560, 1440])
+[LOG] Submitting viewport dest size 1920x1080 for 584e5c9ebe70
+[LOG] handlePreferredScale: 1.00 for 584e5c9ebe70
+[LOG] Welcome to hyprpaper!
+built from commit  ()
+[LOG] Cleaned old hyprpaper preloads (1), removing 8.3MB
+[LOG] Preloaded target /home/azubirif/Imágenes/gruvbox_city.png in 16.61ms -> Pixel size: [1920, 1080]
+[LOG] Buffer created for target /home/azubirif/Imágenes/gruvbox_city.png, Shared Memory usage: 8.3MB
+[LOG] Total SM usage for all buffers: 8.3MB
+[LOG] configure for eDP-1
+[LOG] configure for eDP-1
+[LOG] Image data for eDP-1: /home/azubirif/Imágenes/gruvbox_city.png at [-0.00, 0.00], scale: 1.00 (original image size: [1920, 1080])
+[LOG] Submitting viewport dest size 1920x1080 for 5fd8f0c45760
+[LOG] handlePreferredScale: 1.00 for 5fd8f0c45760
