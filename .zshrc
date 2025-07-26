@@ -1,18 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-export ZSH="$HOME/.oh-my-zsh"
-
-
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
 plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
 
 export LANG=es_ES.UTF-8
 
@@ -69,3 +55,4 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 eval "$(oh-my-posh init zsh --config '~/dotfiles/.config/omp.toml')"
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true

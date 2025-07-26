@@ -17,6 +17,16 @@ final_space = true
   alignment = 'left'
   newline = true
 
+[[blocks.segments]]
+    template = '{{ .UserName }}@{{ .HostName }} '
+    foreground = 'green'
+    background = 'transparent'
+    type = 'session'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+
   [[blocks.segments]]
     template = '{{ .Path }}'
     foreground = 'blue'
