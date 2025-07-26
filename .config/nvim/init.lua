@@ -109,6 +109,7 @@ vim.o.number = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
+vim.opt.relativenumber = true
 
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
@@ -223,6 +224,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
+
+vim.api.nvim_set_option('clipboard', 'unnamed')
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
