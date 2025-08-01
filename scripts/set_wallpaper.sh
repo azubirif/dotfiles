@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Setting  $1"
-
 # Borramos el antiguo symlink
 rm ~/current-wallpaper
 
@@ -12,7 +10,13 @@ ln -s $1 ~/current-wallpaper
 swww img ~/current-wallpaper --transition-type center
 
 # Cambiamos el tema
-wal -i $1
+wal -i $1 -n > /dev/null 2>&1 &
+
+# Actualizamos Mako
+bash ./update_mako.sh
+makoctl reload
 
 # Actualizamos Waybar
 killall -SIGUSR2 waybar
+
+notify-send "Wallpaper actualizado" "Nuevo: $1"
