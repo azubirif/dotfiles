@@ -1,5 +1,6 @@
 #!/bin/bash
 
+pkill waybar
 # Borramos el antiguo symlink
 rm ~/current-wallpaper
 
@@ -33,7 +34,6 @@ done
 makoctl reload
 
 # Actualizamos Waybar
-pkill waybar
 waybar > /dev/null 2>&1 &
 
 notify-send "Wallpaper actualizado" "Nuevo: $1"

@@ -1,10 +1,10 @@
 sort=-time
 layer=top
-background-color=#12151689
+background-color=#1a1e2589
 width=300
 height=150
 border-size=0
-border-color=#887867
+border-color=#D7C6BA
 border-radius=15
 padding=20
 icons=1
