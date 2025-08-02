@@ -1,0 +1,107 @@
+{
+	"layer": "top",
+	"modules-left": ["custom/launcher","cpu","memory"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": ["custom/updates","network","bluetooth","backlight","pulseaudio","clock", "battery","custom/power"],
+	
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-muted": "Mute",
+		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+
+	"hyprland/workspaces": {
+     "format": "{icon}",
+     "on-scroll-up": "hyprctl dispatch workspace e+1",
+     "on-scroll-down": "hyprctl dispatch workspace e-1"
+	},
+
+	"network": {
+		"interface": "wlan0",
+		"tooltip": false,
+		"format-wifi": "  {essid}",
+		"format-ethernet": "",
+		"on-click": "nm-connection-editor"
+	},
+	"backlight": {
+		"tooltip": false,
+		"format": " {}%",
+		"interval":1,
+        "on-scroll-up": "light -A 5",
+		"on-scroll-down": "light -U 5"
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+	"tray":{
+		"icon-size":18,
+		"spacing": 10
+	},
+    "clock": {
+        "format": "<b>{:%H:%M  %d/%m/%Y}</b>"
+    },
+    "cpu": {
+        "interval": 15,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "custom/waymedia": {
+//    	"format": "{title}",
+    	"exec": "~/.config/waybar/scripts/waymedia/waymedia",
+    	"interval": 1,
+    	"limit": 60,
+    	"on-click": "playerctl play-pause",
+    	"on-scroll-up": "playerctl next",
+    	"on-scroll-down": "playerctl previous"
+	},
+	"custom/waymedia-buttons": {
+    "exec": "~/.config/waybar/scripts/waymedia/waymedia-buttons",
+    "interval": 1,
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous"
+	},
+	//" "
+	    "custom/launcher":{
+        "format": " ",
+        "on-click": "rofi -show drun",
+        "on-click-right": "killall rofi"
+    },
+    "custom/power":{
+        "format": " ",
+        "on-click": "bash ~/.config/rofi/leave/leave.sh"
+    },
+    "custom/updates":{
+        "format": "{} Update(s)",
+        "exec": "checkupdates | wc -l",
+        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+        "interval": 15,
+        "on-click": "kitty -e paru -Syu && notify-send 'The system has been updated' "
+    },
+	"bluetooth": {
+    "format": " 󰂯 ",
+    "tooltip": true,
+	  "tooltip-format": "Bluetooth Settings",
+    "on-click": "blueman-manager"
+   }
+
+}
