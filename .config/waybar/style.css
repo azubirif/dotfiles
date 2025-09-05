@@ -46,6 +46,7 @@ tooltip {
 #battery:hover,
 #cpu:hover,
 #memory:hover,
+#custom-brightness:hover,
 #temperature:hover {
 	transition: all .3s ease;
 	color: @color9;
@@ -74,6 +75,11 @@ tooltip {
 	transition: all .3s ease;
 	color: @color7;
 
+}
+
+#custom-brightness {
+	color: @color7;
+	transition: all .3s ease;
 }
 
 #workspaces {

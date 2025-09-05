@@ -58,4 +58,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 eval "$(oh-my-posh init zsh --config '~/dotfiles/.config/omp.toml')"
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
 fastfetch

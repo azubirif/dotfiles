@@ -477,6 +477,13 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
+  {
+    'quarto-dev/quarto-nvim',
+    dependencies = {
+      'jmbuhr/otter.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+  },
 
   -- LSP Plugins
   {
