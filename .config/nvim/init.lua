@@ -884,16 +884,41 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = true, auto_show_delay_ms = 500, window = {
+          border = 'rounded',
+        } },
+
+        menu = {
+          border = 'rounded',
+          -- Show completion item details
+          draw = {
+            -- Show completion item kind and source
+            columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind', gap = 1 }, { 'source_name' } },
+            -- Alternative format that includes more details
+            -- columns = { { "kind_icon", "label", "label_description", gap = 1 }, { "kind", "source_name" } },
+          },
+        },
       },
 
       sources = {
         default = { 'lsp', 'path', 'snippets', 'lazydev' },
         providers = {
-          lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          lazydev = {
+            module = 'lazydev.integrations.blink',
+            score_offset = 100,
+            name = 'LazyDev', -- Custom name for the source
+          },
+          lsp = {
+            name = 'LSP', -- Custom name for LSP completions
+          },
+          path = {
+            name = 'Path', -- Custom name for path completions
+          },
+          snippets = {
+            name = 'Snippet', -- Custom name for snippets
+          },
         },
       },
-
       snippets = { preset = 'luasnip' },
 
       -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
@@ -950,7 +975,23 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'zig', 'typescript' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'zig',
+        'typescript',
+        'eslint-lsp',
+        'prettierd',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
