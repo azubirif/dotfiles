@@ -989,8 +989,8 @@ require('lazy').setup({
         'vimdoc',
         'zig',
         'typescript',
-        'eslint-lsp',
-        'prettierd',
+        -- 'eslint-lsp',
+        -- 'prettierd',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
