@@ -639,7 +639,7 @@ local s = {
     i(0),
   }),
 
-  s('=>', { t '\\implies' }),
+  s('imp', { t '\\implies' }),
 
   s('=<', { t '\\impliedby' }),
 

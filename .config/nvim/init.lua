@@ -110,6 +110,7 @@ vim.o.number = true
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 vim.opt.relativenumber = true
+vim.opt.termguicolors = true
 
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
@@ -935,15 +936,22 @@ require('lazy').setup({
     },
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'catppuccin/nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+  -- { -- You can easily change to a different colorscheme.
+  --   -- Change the name of the colorscheme plugin below, and then
+  --   -- change the command in the config to whatever the name of that colorscheme is.
+  --   --
+  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+  --   'catppuccin/nvim',
+  --   priority = 1000, -- Make sure to load this before all the other start plugins.
+  --   config = function()
+  --     vim.cmd.colorscheme 'catppuccin'
+  --   end,
+  -- },
+  {
+    'morhetz/gruvbox',
+    priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin'
+      vim.cmd.colorscheme 'gruvbox'
     end,
   },
 
@@ -1062,7 +1070,8 @@ require('lazy').setup({
     config = function()
       require('lualine').setup {
         options = {
-          theme = 'catppuccin',
+          -- theme = 'catppuccin',
+          theme = 'gruvbox',
           -- ... the rest of our lualine config
         },
       }
