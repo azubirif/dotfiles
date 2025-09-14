@@ -10,7 +10,7 @@ export LANG=es_ES.UTF-8
  fi
 
 alias cdgh="cd ~/Documentos/GitHub/"
-alias cdapuntes="cd ~/Documentos/GitHub/apuntes-carrera/source/content/"
+alias cdapuntes="cd ~/side-projects/azubirif-dev-2/pdfs/"
 
 alias condaenv='eval "$(/home/azubirif/anaconda3/bin/conda shell.zsh hook)"'
 alias hx="helix"

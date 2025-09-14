@@ -3,6 +3,7 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
+include ~/.cache/wal/colors-sway
 
 ### Variables
 #
@@ -23,7 +24,7 @@ set $browser firefox
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/dotfiles/wallpapers/mountains.png fill
+output * bg ~/current-wallpaper fill
 #
 # Example configuration:
 #
@@ -225,20 +226,32 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 #
 # Read `man 5 sway-bar` for more information about this section.
 
+set $inactive_border $color0 
+set $active_border $color4 
+set $urgent_border $color1
+set $placeholder_border $color8 
+
+# Class border colors
+client.focused $active_border $active_border $active_border $active_border
+client.focused_inactive $inactive_border $inactive_border $inactive_border $inactive_border
+client.unfocused $inactive_border $inactive_border $inactive_border $inactive_border
+client.urgent $urgent_border $urgent_border $urgent_border $urgent_border
+client.placeholder $placeholder_border $placeholder_border $placeholder_border $placeholder_border
+
 default_border pixel 2
 bar {
-
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command  while date +󰁹' '$(cat /sys/class/power_supply/BAT1/capacity)%' '' %Y-%m-%d  %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+		swaybar_command waybar
+    # position top
+    #
+    # # When the status_command prints a new line to stdout, swaybar updates.
+    # # The default just shows the current date and time.
+    # status_command  while date +󰁹' '$(cat /sys/class/power_supply/BAT1/capacity)%' '' %Y-%m-%d  %X'; do sleep 1; done
+    #
+    # colors {
+    #     statusline #ffffff
+    #     background #323232
+    #     inactive_workspace #32323200 #32323200 #5c5c5c
+    # }
 }
 
 include /etc/sway/config.d/*

@@ -117,6 +117,12 @@ local s = {
     t { '', '\\end{proof}' },
   }),
 
+  s('itmize', {
+    t { '\\begin{itemize}', '\t' },
+    i(0),
+    t { '', '\\end{itemize}' },
+  }),
+
   s('def', {
     t '\\begin{definition}[',
     i(1),
@@ -356,6 +362,12 @@ local s = {
     t '}',
   }),
 
+  s('tbf', {
+    t '\\textbf{',
+    i(1),
+    t '}',
+  }),
+
   s('nabl', { t '\\nabla' }),
 
   s('vv', {
@@ -470,7 +482,7 @@ local s = {
     i(0),
   }),
 
-  s('//', {
+  s('frac', {
     t '\\frac{',
     i(1),
     t '}{',

@@ -100,6 +100,7 @@ tooltip {
 	transition: all 1s ease;
 }
 
+#workspaces button.focused,
 #workspaces button.active {
 	color: @color9;
 	border: none;
