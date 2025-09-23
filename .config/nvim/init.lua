@@ -93,6 +93,13 @@ vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.cmd [[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]]
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
@@ -186,6 +193,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', { desc = 'NvimTree toggle' })
 vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeFindFile<CR>', { desc = 'NvimTree focus' })
+vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Escape' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -787,7 +795,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = {}
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
@@ -801,6 +809,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
+        tex = { 'tex-fmt' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -939,22 +948,48 @@ require('lazy').setup({
     },
   },
 
-  -- { -- You can easily change to a different colorscheme.
-  --   -- Change the name of the colorscheme plugin below, and then
-  --   -- change the command in the config to whatever the name of that colorscheme is.
-  --   --
-  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  --   'catppuccin/nvim',
-  --   priority = 1000, -- Make sure to load this before all the other start plugins.
-  --   config = function()
-  --     vim.cmd.colorscheme 'catppuccin'
-  --   end,
-  -- },
+  { -- You can easily change to a different colorscheme.
+    -- Change the name of the colorscheme plugin below, and then
+    -- change the command in the config to whatever the name of that colorscheme is.
+    --
+    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    'catppuccin/nvim',
+    priority = 1000, -- Make sure to load this before all the other start plugins.
+    config = function()
+      -- vim.cmd.colorscheme 'catppuccin'
+    end,
+  },
+  {
+    'rebelot/kanagawa.nvim',
+    priority = 1000,
+    config = function()
+      -- vim.cmd.colorscheme 'kanagawa'
+    end,
+  },
+  {
+    'vague2k/vague.nvim',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other plugins
+    config = function()
+      -- NOTE: you do not need to call setup if you don't want to.
+      require('vague').setup {
+        -- optional configuration here
+      }
+      vim.cmd 'colorscheme vague'
+    end,
+  },
   {
     'morhetz/gruvbox',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'gruvbox'
+      -- vim.cmd.colorscheme 'gruvbox'
+    end,
+  },
+  {
+    'nordtheme/nord',
+    priority = 1000,
+    config = function()
+      -- vim.cmd.colorscheme 'nord'
     end,
   },
 
@@ -1073,8 +1108,8 @@ require('lazy').setup({
     config = function()
       require('lualine').setup {
         options = {
-          -- theme = 'catppuccin',
-          theme = 'gruvbox',
+          theme = 'catppuccin',
+          -- theme = 'gruvbox',
           -- ... the rest of our lualine config
         },
       }
