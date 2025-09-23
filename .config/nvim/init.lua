@@ -94,12 +94,12 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.cmd [[
-  highlight Normal guibg=none
-  highlight NonText guibg=none
-  highlight Normal ctermbg=none
-  highlight NonText ctermbg=none
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NormalNC guibg=NONE ctermbg=NONE
+  hi SignColumn guibg=NONE ctermbg=NONE
+  hi EndOfBuffer guibg=NONE ctermbg=NONE
+  hi NormalFloat guibg=NONE ctermbg=NONE
 ]]
-
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
@@ -974,6 +974,7 @@ require('lazy').setup({
       -- NOTE: you do not need to call setup if you don't want to.
       require('vague').setup {
         -- optional configuration here
+        transparent = true,
       }
       vim.cmd 'colorscheme vague'
     end,
