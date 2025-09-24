@@ -84,7 +84,7 @@ local function basename()
   return vim.fn.expand '%:t:r'
 end
 
-local s = {
+local snips = {
   -- GLOBAL SNIPPETS
   s('pkg', {
     t '\\usepackage{',
@@ -324,59 +324,6 @@ local s = {
     t '}',
   }),
 
-  -- GREEK LETTERS (lowercase)
-  s({
-    trig = '@vp',
-    wordTrig = false,
-  }, { t '\\varphi' }),
-  s({ trig = '@a', priority = 1500 }, { t '\\alpha' }),
-  s({ trig = '@b', priority = 1500 }, { t '\\beta' }),
-  s({ trig = '@g', priority = 1500 }, { t '\\gamma' }),
-  s({ trig = '@d', priority = 1500 }, { t '\\delta' }),
-  s({ trig = '@e', priority = 1500 }, { t '\\epsilon' }),
-  s({ trig = '@z', priority = 1500 }, { t '\\zeta' }),
-  s({ trig = '@h', priority = 1500 }, { t '\\eta' }),
-  s({ trig = '@t', priority = 1500 }, { t '\\theta' }),
-  s({ trig = '@i', priority = 1500 }, { t '\\iota' }),
-  s({ trig = '@k', priority = 1500 }, { t '\\kappa' }),
-  s({ trig = '@l', priority = 1500 }, { t '\\lambda' }),
-  s({ trig = '@m', priority = 1500 }, { t '\\mu' }),
-  s({ trig = '@n', priority = 1500 }, { t '\\nu' }),
-  s({ trig = '@xi', priority = 1500 }, { t '\\xi' }),
-  s({ trig = '@o', priority = 1500 }, { t '\\omicron' }),
-  s({ trig = '@p', priority = 1500 }, { t '\\pi' }),
-  s({ trig = '@r', priority = 1500 }, { t '\\rho' }),
-  s({ trig = '@s', priority = 1500 }, { t '\\sigma' }),
-  s({ trig = '@u', priority = 1500 }, { t '\\upsilon' }),
-  s({ trig = '@phi', priority = 1500 }, { t '\\phi' }),
-  s({ trig = '@chi', priority = 1500 }, { t '\\chi' }),
-  s({ trig = '@psi', priority = 1500 }, { t '\\psi' }),
-  s({ trig = '@w', priority = 1500 }, { t '\\omega' }),
-  -- GREEK LETTERS (uppercase)
-  s({ trig = '@A', priority = 1500 }, { t '\\Alpha' }),
-  s({ trig = '@B', priority = 1500 }, { t '\\Beta' }),
-  s({ trig = '@G', priority = 1500 }, { t '\\Gamma' }),
-  s({ trig = '@D', priority = 1500 }, { t '\\Delta' }),
-  s({ trig = '@E', priority = 1500 }, { t '\\Epsilon' }),
-  s({ trig = '@Z', priority = 1500 }, { t '\\Zeta' }),
-  s({ trig = '@H', priority = 1500 }, { t '\\Eta' }),
-  s({ trig = '@T', priority = 1500 }, { t '\\Theta' }),
-  s({ trig = '@I', priority = 1500 }, { t '\\Iota' }),
-  s({ trig = '@K', priority = 1500 }, { t '\\Kappa' }),
-  s({ trig = '@L', priority = 1500 }, { t '\\Lambda' }),
-  s({ trig = '@M', priority = 1500 }, { t '\\Mu' }),
-  s({ trig = '@N', priority = 1500 }, { t '\\Nu' }),
-  s({ trig = '@Xi', priority = 1500 }, { t '\\Xi' }),
-  s({ trig = '@O', priority = 1500 }, { t '\\Omicron' }),
-  s({ trig = '@P', priority = 1500 }, { t '\\Pi' }),
-  s({ trig = '@R', priority = 1500 }, { t '\\Rho' }),
-  s({ trig = '@S', priority = 1500 }, { t '\\Sigma' }),
-  s({ trig = '@U', priority = 1500 }, { t '\\Upsilon' }),
-  s({ trig = '@Phi', priority = 1500 }, { t '\\Phi' }),
-  s({ trig = '@Chi', priority = 1500 }, { t '\\Chi' }),
-  s({ trig = '@Psi', priority = 1500 }, { t '\\Psi' }),
-  s({ trig = '@W', priority = 1500 }, { t '\\Omega' }),
-  s({ trig = '@ve', priority = 1500 }, { t '\\varepsilon' }),
   -- MATH SNIPPETS
   s('vb', {
     t '\\vb{',
@@ -474,6 +421,11 @@ local s = {
     t { '\\begin{equation}', '\t\\begin{split}', '\t\t' },
     i(0),
     t { '', '\t\\end{split}', '\\end{equation}' },
+  }),
+  s('uneqq', {
+    t { '\\begin{equation*}', '\t\\begin{split}', '\t\t' },
+    i(0),
+    t { '', '\t\\end{split}', '\\end{equation*}' },
   }),
 
   s('cc', { t '\\subset ' }),
@@ -838,56 +790,56 @@ local s = {
   }),
 }
 
-vim.list_extend(s, greek_postfix_completions())
+local greek_lower = {
+  'alpha',
+  'beta',
+  'gamma',
+  'delta',
+  'epsilon',
+  'zeta',
+  'eta',
+  'theta',
+  'iota',
+  'kappa',
+  'lambda',
+  'mu',
+  'nu',
+  'xi',
+  'omicron',
+  'pi',
+  'rho',
+  'sigma',
+  'tau',
+  'upsilon',
+  'phi',
+  'chi',
+  'psi',
+  'omega',
+}
 
--- Greek letters
--- Deshabilitamos el mapping default
-vim.keymap.set('i', '<C-g>', '<nop>')
-vim.keymap.set('i', '<C-g>a', '\\alpha', { buffer = 0 })
-vim.keymap.set('i', '<C-g>A', 'A', { buffer = 0 })
-vim.keymap.set('i', '<C-g>b', '\\beta', { buffer = 0 })
-vim.keymap.set('i', '<C-g>B', 'B', { buffer = 0 })
-vim.keymap.set('i', '<C-g>c', '\\chi', { buffer = 0 })
-vim.keymap.set('i', '<C-g>C', 'X', { buffer = 0 })
-vim.keymap.set('i', '<C-g>d', '\\delta', { buffer = 0 })
-vim.keymap.set('i', '<C-g>D', '\\Delta', { buffer = 0 })
-vim.keymap.set('i', '<C-g>e', '\\epsilon', { buffer = 0 })
-vim.keymap.set('i', '<C-g>E', 'E', { buffer = 0 })
-vim.keymap.set('i', '<C-g>1', '\\eta', { buffer = 0 })
-vim.keymap.set('i', '<C-g>!', 'E', { buffer = 0 })
-vim.keymap.set('i', '<C-g>g', '\\gamma', { buffer = 0 })
-vim.keymap.set('i', '<C-g>G', '\\Gamma', { buffer = 0 })
-vim.keymap.set('i', '<C-g>i', '\\iota', { buffer = 0 })
-vim.keymap.set('i', '<C-g>I', 'I', { buffer = 0 })
-vim.keymap.set('i', '<C-g>k', '\\kappa', { buffer = 0 })
-vim.keymap.set('i', '<C-g>K', 'K', { buffer = 0 })
-vim.keymap.set('i', '<C-g>l', '\\lambda', { buffer = 0 })
-vim.keymap.set('i', '<C-g>L', '\\Lambda', { buffer = 0 })
-vim.keymap.set('i', '<C-g>m', '\\mu', { buffer = 0 })
-vim.keymap.set('i', '<C-g>M', 'M', { buffer = 0 })
-vim.keymap.set('i', '<C-g>n', '\\nu', { buffer = 0 })
-vim.keymap.set('i', '<C-g>N', 'N', { buffer = 0 })
-vim.keymap.set('i', '<C-g>o', '\\omega', { buffer = 0 })
-vim.keymap.set('i', '<C-g>O', '\\Omega', { buffer = 0 })
-vim.keymap.set('i', '<C-g>f', '\\phi', { buffer = 0 })
-vim.keymap.set('i', '<C-g>F', '\\Phi', { buffer = 0 })
-vim.keymap.set('i', '<C-g>p', '\\psi', { buffer = 0 })
-vim.keymap.set('i', '<C-g>P', '\\Psi', { buffer = 0 })
-vim.keymap.set('i', '<C-g>3', '\\pi', { buffer = 0 })
-vim.keymap.set('i', '<C-g>#', '\\Pi', { buffer = 0 })
-vim.keymap.set('i', '<C-g>r', '\\rho', { buffer = 0 })
-vim.keymap.set('i', '<C-g>R', 'R', { buffer = 0 })
-vim.keymap.set('i', '<C-g>s', '\\sigma', { buffer = 0 })
-vim.keymap.set('i', '<C-g>S', '\\Sigma', { buffer = 0 })
-vim.keymap.set('i', '<C-g>t', '\\tau', { buffer = 0 })
-vim.keymap.set('i', '<C-g>T', 'T', { buffer = 0 })
-vim.keymap.set('i', '<C-g>2', '\\theta', { buffer = 0 })
-vim.keymap.set('i', '<C-g>@', '\\Theta', { buffer = 0 })
-vim.keymap.set('i', '<C-g>u', '\\upsilon', { buffer = 0 })
-vim.keymap.set('i', '<C-g>U', '\\Upsilon', { buffer = 0 })
-vim.keymap.set('i', '<C-g>x', '\\xi', { buffer = 0 })
-vim.keymap.set('i', '<C-g>X', '\\Xi', { buffer = 0 })
-vim.keymap.set('i', '<C-g>z', '\\zeta', { buffer = 0 })
-vim.keymap.set('i', '<C-g>Z', 'Z', { buffer = 0 })
+-- valid uppercase LaTeX commands
+local greek_upper = {
+  Gamma = 'Gamma',
+  Delta = 'Delta',
+  Theta = 'Theta',
+  Lambda = 'Lambda',
+  Xi = 'Xi',
+  Pi = 'Pi',
+  Sigma = 'Sigma',
+  Upsilon = 'Upsilon',
+  Phi = 'Phi',
+  Psi = 'Psi',
+  Omega = 'Omega',
+}
 
-ls.add_snippets('tex', s, { key = 'tex' })
+-- lowercase snippets
+for _, g in ipairs(greek_lower) do
+  table.insert(snips, s(g, t('\\' .. g)))
+end
+
+-- uppercase snippets
+for trig, cmd in pairs(greek_upper) do
+  table.insert(snips, s(trig, t('\\' .. cmd)))
+end
+
+ls.add_snippets('tex', snips, { key = 'tex' })
