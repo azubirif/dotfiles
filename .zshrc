@@ -64,3 +64,9 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
 fi
 
 fastfetch
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/azubirif/.dart-cli-completion/zsh-config.zsh ]] && . /home/azubirif/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+

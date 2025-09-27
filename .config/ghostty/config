@@ -2,3 +2,4 @@ font-family = "Ubuntu Mono"
 theme = Rose Pine
 font-size=18
 background-opacity=0.8
+cursor-style=block
