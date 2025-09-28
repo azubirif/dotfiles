@@ -22,6 +22,7 @@ alias log_out="hyprctl dispatch exit"
 alias waybar_reload="killall -SIGUSR2 waybar"
 alias hyprpaper_reload="killall hyprpaper && nohup hyprpaper &"
 alias set_wallpaper="~/dotfiles/scripts/set_wallpaper.sh"
+alias sman="~/dotfiles/scripts/sman.sh"
 
 
 export EDITOR=nvim
