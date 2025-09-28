@@ -14,7 +14,7 @@ alias cdapuntes="cd ~/dev/azubirif-dev-2/pdfs/"
 
 alias condaenv='eval "$(/home/azubirif/anaconda3/bin/conda shell.zsh hook)"'
 alias hx="helix"
-alias vim="nvim"
+alias vi="nvim"
 alias c="clear"
 
 # Para Arch
