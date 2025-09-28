@@ -3,3 +3,4 @@ theme = Rose Pine
 font-size=18
 background-opacity=0.8
 cursor-style=block
+app-notifications=no-clipboard-copy
